@@ -30,6 +30,10 @@ jobs:
     
         - name: Unit Testing
           run: npm test
+          env:
+            MONGO_URI: ${{ env.MONGO_URI }}
+            MONGO_USERNAME: ${{ env.MONGO_USERNAME }}   # ← was MONGO_USER (wrong name, wrong ref)
+            MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
           
         - name: Archive Test Result
           uses: actions/upload-artifact@v4
